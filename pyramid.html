@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<script>
+	var colors = ["red","blue","green","yellow","purple"];
+	var i = 0;
+	var selectedColor;
+		function button_click(n) {
+			selectedColor = colors[i];
+			document.getElementById(n).style.backgroundColor = selectedColor;
+			i++;
+			if(i > colors.length)
+				i = 0;
+		}
+</script>
+<style>
+	.maintri
+	{
+		position: relative;
+		width:0;
+		height:0;
+		border-left:solid transparent var(--sz);
+		border-right: solid transparent var(--sz);
+		border-bottom: solid white var(--sz);
+	}
+	.triangle
+	{
+		
+		border-bottom: 50px solid var(--col);
+		border-left: 50px solid transparent;
+		border-right: 50px solid transparent;      
+		position:absolute;
+		height: 0px;
+		width: var(--wide);
+		top: var(--pos1);
+		left: var(--pos2);
+	}
+    .box{
+        width: 50px;
+        height: 50px;
+        background-color: var(--col);
+    }
+
+</style>
+<div style="background-color: blue;">
+<body>
+	
+    <div class="maintri" style="--sz: 200px;">
+	<div id="t1" class="triangle" style="--pos1: 50px; --pos2: -50px; --wide: 0; --col: red;"  onmouseover="button_click(this.id);"></div>
+	<div id="t2" class="triangle" style="--pos1:105px; --pos2: -100px; --wide: 100px; --col: blue;" onclick="button_click(this.id);"></div>
+	<div id="t3" class="triangle" onclick="button_click(this.id);"></div>
+	<div id="t4" class="triangle" onclick="button_click(this.id);"></div>
+	<div id="t5" class="triangle" onclick="button_click();"></div> 
+</div>
+</body>
+<div class="round" style="--radius: var(--rad-25);"></div>
+<div class="round" style="--radius: 100%;"></div>
+<style>
+  .round {
+    display: block;
+    height: 40px;
+    width: 40px;
+    border: 3px solid red;
+    border-radius: var(--radius);
+  }
+</style>
+
+<!--<head>
+<
+
+</head>__>
+
+</html> 
