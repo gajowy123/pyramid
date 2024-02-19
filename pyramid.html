@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-
+<head>
 <script>
 	var colors = ["red","blue","green","yellow","purple"];
 	var i = 0;
@@ -22,52 +22,58 @@
 		border-left:solid transparent var(--sz);
 		border-right: solid transparent var(--sz);
 		border-bottom: solid white var(--sz);
+		display: flex;
+		justify-content: center;
 	}
 	.triangle
 	{
-		
-		border-bottom: 50px solid var(--col);
-		border-left: 50px solid transparent;
-		border-right: 50px solid transparent;      
+		position: relative;
+		border-bottom: 75px solid var(--col);
+		border-left: 75px solid transparent;
+		border-right: 75px solid transparent;      
 		position:absolute;
 		height: 0px;
 		width: var(--wide);
 		top: var(--pos1);
-		left: var(--pos2);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
 	}
     .box{
         width: 50px;
         height: 50px;
         background-color: var(--col);
     }
-
-</style>
-
-<div style="background-color: blue;">
-
-<body>
-	
-    <div class="maintri" style="--sz: 450px;">
-	<div id="t1" class="triangle" style="--pos1: 50px; --pos2: -50px; --wide: 0; --col: red;"  onmouseover="button_click(this.id);">
-	<span style="inline;"><button type="button">+</button> <button type="button">-</button></span> </div>
-	<div id="t2" class="triangle" style="--pos1:105px; --pos2: -105px; --wide: 110px; --col: blue;" onclick="button_click(this.id);"></div>
-	<div id="t3" class="triangle" style="--pos1:155px; --pos2: -155px; --wide: 210px; --col: purple;"" onclick="button_click(this.id);"></div>
-	<div id="t4" class="triangle" style="--pos1:205px; --pos2: -205px; --wide: 310px; --col: yellow;" onclick="button_click(this.id);"></div>
-	<div id="t5" class="triangle" onclick="button_click();"></div> 
-</div>
-</body>
-</div>
-<div class="round" style="--radius: var(--rad-25);"></div>
-<div class="round" style="--radius: 100%;"></div>
-<style>
-  .round {
+	.round {
     display: block;
     height: 40px;
     width: 40px;
     border: 3px solid red;
     border-radius: var(--radius);
   }
+
 </style>
+</head>
+<body>
+<div style="background-color: blue;">
+
+
+	
+    <div class="maintri" style="--sz: 450px;">
+	<div id="t1" class="triangle" style="--pos1: 50px; --wide: 0; --col: red;"  onmouseover="button_click(this.id);">
+	</div>
+	<div id="t2" class="triangle" style="--pos1:105px; --wide: 110px; --col: blue;" onclick="button_click(this.id);">
+	<button type="button">-</button><button type="button">+</button></div>
+	<div id="t3" class="triangle" style="--pos1:155px; --wide: 210px; --col: purple;"" onclick="button_click(this.id);"></div>
+	<div id="t4" class="triangle" style="--pos1:205px; --wide: 310px; --col: yellow;" onclick="button_click(this.id);"></div>
+	<div id="t5" class="triangle" onclick="button_click();"></div> 
+</div>
+</div>
+<div class="round" style="--radius: var(--rad-25);"></div>
+<div class="round" style="--radius: 100%;"></div>
+</body>
+
 
 
 </html> 
