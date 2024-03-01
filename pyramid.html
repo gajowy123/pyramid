@@ -1,79 +1,152 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<script>
-	var colors = ["red","blue","green","yellow","purple"];
-	var i = 0;
-	var selectedColor;
-		function button_click(n) {
-			selectedColor = colors[i];
-			document.getElementById(n).style.backgroundColor = selectedColor;
-			i++;
-			if(i > colors.length)
-				i = 0;
-		}
-</script>
-<style>
-	.maintri
-	{
-		position: relative;
-		width:0;
-		height:0;
-		border-left:solid transparent var(--sz);
-		border-right: solid transparent var(--sz);
-		border-bottom: solid white var(--sz);
-		display: flex;
-		justify-content: center;
-	}
-	.triangle
-	{
-		position: relative;
-		border-bottom: 75px solid var(--col);
-		border-left: 75px solid transparent;
-		border-right: 75px solid transparent;      
-		position:absolute;
-		height: 0px;
-		width: var(--wide);
-		top: var(--pos1);
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 10px;
-	}
-    .box{
-        width: 50px;
-        height: 50px;
-        background-color: var(--col);
-    }
-	.round {
-    display: block;
-    height: 40px;
-    width: 40px;
-    border: 3px solid red;
-    border-radius: var(--radius);
-  }
+    <script>
 
-</style>
+        function button_click(n) {
+            const p = document.getElementById(n);
+            const m = parseInt(p.textContent) + 1;
+            p.textContent = m.toString();
+        }
+        function decreaseVal(n){
+            const p =document.getElementById(n);
+            if(parseInt(p.textContent)>0){
+            const m =parseInt(p.textContent)-1;
+            p.textContent=m.toString();}
+        }
+        function button_sh(n) {
+            const b1 = document.getElementById(n + "b1");
+            const b2 = document.getElementById(n + "b2");
+            b1.style.visibility = "visible";
+            b2.style.visibility = "visible";
+
+        }
+        function button_hi(n) {
+            const b1 = document.getElementById(n + "b1");
+            const b2 = document.getElementById(n + "b2");
+            b1.style.visibility = "hidden";
+            b2.style.visibility = "hidden";
+        }
+
+    </script>
+    <style>
+        .pyramid {
+            clip-path: polygon(50% 0, 100% 100%, 0 100%);
+            width: 100vmin;
+            aspect-ratio: 1.3 / 1;
+            background-color: white;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0vmin;
+            padding: 0px;
+        }
+
+        .layer {
+            background-color: var(--color);
+            display: flex;
+            justify-content: center;
+            align-items: last baseline;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 11%;
+            height: 35%;
+            gap: 5px;
+        }
+
+        .badge {
+            background: radial-gradient(5px -9px,
+                    circle,
+                    white 8%,
+                    red 26px);
+            background-color: red;
+            border: 2px solid white;
+            border-radius: 10px;
+            /* one half of ( (border * 2) + height + padding ) */
+            box-shadow: 1px 1px 1px black;
+            color: white;
+            font: bold 13px/11px Helvetica, Verdana, Tahoma;
+            height: 12px;
+            min-width: 10px;
+            padding: 2px 3px 0 3px;
+            text-align: center;
+        }
+    </style>
+
+
 </head>
+
 <body>
-<div style="background-color: blue;">
+My Food Pyramid
 
+    <div class="pyramid" >
+        <div class="layer" style="--color: red;" onmouseover='button_sh("l1")' onmouseout='button_hi("l1")'>
+            <div class="container">
+                <button id="l1b1" type="button" style="visibility:hidden;" onclick='decreaseVal("b1")'>-</button>
+                <div class="badge">
+                    <span id="b1">1</span>
+                </div>
+                <button id="l1b2" type="button" style="visibility:hidden;" onclick='button_click("b1")'>+</button>
+            </div>
+        </div>
+        <div class="layer" style="--color: orange; margin-bottom:10px; margin-top:10px;" onmouseover='button_sh("l2")' onmouseout='button_hi("l2")'>
+            <div class="container">
+                <button id="l2b1" type="button" style="visibility:hidden;" onclick='decreaseVal("b2")'>-</button>
+                <div class="badge">
+                    <span id="b2">1</span>
+                </div>
+                <button id="l2b2" type="button" style="visibility:hidden;" onclick='button_click("b2")'>+</button>
+            </div>
+        </div>
+        
+        <div class="layer" style="--color: yellow;" onmouseover='button_sh("l3")' onmouseout='button_hi("l3")'>
+            <div class="container">
+                <button id="l3b1" type="button" style="visibility:hidden;" onclick='decreaseVal("b3")'>-</button>
+                <div class="badge">
+                    <span id="b3">1</span>
+                </div>
+                <button id="l3b2" type="button" style="visibility:hidden;" onclick='button_click("b3")'>+</button>
+            </div>
+        </div>
+        <div class="layer" style="--color: blue;" onmouseover='button_sh("l4")' onmouseout='button_hi("l4")'>
+            <div class="container">
+                <button id="l4b1" type="button" style="visibility:hidden;" onclick='decreaseVal("b4")'>-</button>
+                <div class="badge">
+                    <span id="b4">1</span>
+                </div>
+                <button id="l4b2" type="button" style="visibility:hidden;" onclick='button_click("b4")'>+</button>
+            </div>
+        </div>
+        <div class="layer" style="--color: brown;" onmouseover='button_sh("l5")' onmouseout='button_hi("l5")'>
+            <div class="container">
+                <button id="l5b1" type="button" style="visibility:hidden;" onclick='decreaseVal("b5")'>-</button>
+                <div class="badge">
+                    <span id="b5">1</span>
+                </div>
+                <button id="l5b2" type="button" style="visibility:hidden;" onclick='button_click("b5")'>+</button>
+            </div>
+        </div>
+        <div class="layer" style="--color: green;" onmouseover='button_sh("l6")' onmouseout='button_hi("l6")'>
+            <div class="container">
+                <button id="l6b1" type="button" style="visibility:hidden;" onclick='decreaseVal("b6")'>-</button>
+                <div class="badge">
+                    <span id="b6">1</span>
+                </div>
+                <button id="l6b2" type="button" style="visibility:hidden;" onclick='button_click("b6")'>+</button>
+            </div>
+        </div>
+        
 
-	
-    <div class="maintri" style="--sz: 450px;">
-	<div id="t1" class="triangle" style="--pos1: 50px; --wide: 0; --col: red;"  onmouseover="button_click(this.id);">
-	</div>
-	<div id="t2" class="triangle" style="--pos1:105px; --wide: 110px; --col: blue;" onclick="button_click(this.id);">
-	<button type="button">-</button><button type="button">+</button></div>
-	<div id="t3" class="triangle" style="--pos1:155px; --wide: 210px; --col: purple;"" onclick="button_click(this.id);"></div>
-	<div id="t4" class="triangle" style="--pos1:205px; --wide: 310px; --col: yellow;" onclick="button_click(this.id);"></div>
-	<div id="t5" class="triangle" onclick="button_click();"></div> 
+    </div>
+    <div style="text-align: center;"> 
+    <label for="start">Date:</label></div>
+<div style="text-align: center;">
+<input type="date" value="2022-07-22" min="2018-01-01" max="2025-12-31" />
 </div>
-</div>
-<div class="round" style="--radius: var(--rad-25);"></div>
-<div class="round" style="--radius: 100%;"></div>
 </body>
 
-
-
-</html> 
+</html>
